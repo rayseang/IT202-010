@@ -1,6 +1,6 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
-if (!is_logged_in()) {
+if (!has_role("Admin)) {
     //this will redirect to login and kill the rest of this script (prevent it from executing)
     flash("You don't have permission to access this page");
     die(header("Location: login.php"));
@@ -8,7 +8,7 @@ if (!is_logged_in()) {
 ?>
 
 <?php
-        if(isset(_$POST["name"])){
+        if(isset($_POST["name"])){
                 $name=safe_get($_POST,"name","");
                 $quantity=(int)safe_get($_POST, "quantity", 0);
                 $price= (int)safe_get($_POST, "price", 0);
@@ -27,11 +27,12 @@ if (!is_logged_in()) {
                                 flash("Added item to Products Table");
                         }
                         else{
-                                flash("Error adding item to Products Table: ". var_exports($stmt->errorInfo(), true)):
+                                flash("Error adding item to Products Table: ". var_export($stmt->errorInfo(), true));
                         }
                 }
         }
 ?>
+
 <div class="container-fluid">
         <div class="h3">Add Product</div>
         <form method="POST">
@@ -45,12 +46,17 @@ if (!is_logged_in()) {
                 </div>
                 <div>
                         <label for="p" class="form-label">Price</label>
-                        <testarea name="price" id="p" class="form-control" required></textarea>
+                        <textarea name="price" id="p" class="form-control" required></textarea>
+                </div>
+
                 <div>
                         <input type="submit" class="btn btn-success btn" value="Add Product"/>
                 </div>
         </form>
 </div>
+
+
+<?php require_once(__DIR__ . "/../lib/helpers.php");
 
 
 
