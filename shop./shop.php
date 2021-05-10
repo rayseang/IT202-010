@@ -1,5 +1,3 @@
-1                                                                              File: shop.php
-
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
 if (!is_logged_in()) {
@@ -62,8 +60,9 @@ $(document).ready(()=>{
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button onclick="addToCart"(<?php safer_echo($item['id']);?>>"">Add to Cart</button>
+                        <button onclick="addToCart"<?php safer_echo($item['id']);?>"">Add to Cart</button>
                 <?php endforeach; ?>
             </div>
         </div>
     <?php else : ?>
+
