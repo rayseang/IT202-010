@@ -1,3 +1,5 @@
+1                                                                              File: shop.php
+
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
 if (!is_logged_in()) {
@@ -6,13 +8,14 @@ if (!is_logged_in()) {
 }
 ?>
 <?php
-$query= "Select id,name, price, quantity, from Products WHERE quantity > 0 limit 25";
+$query= "Select id,name, price, quantity from Products WHERE quantity > 0 limit 25";
 $db = getDB();
 $stmt= $db->prepare($query);
 $results=[];
 $r= $stmt->execute();
+echo var_export($stmt->errorInfo(), true);
 if ($r) {
-    $results=$stmt->fetchALL(PDO::FETCH_ASSOC);
+    $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 <script>
@@ -21,7 +24,7 @@ function addToCart(itemId){
     $.post("api/add_to_cart.php",{itemId: itemId},(data, status)=>{
         console.log("response",data,status);
     });
-    
+
 }
 function getCart(){
     $.get("api/get_cart.php", (data, status)=>{
@@ -38,7 +41,7 @@ function getCart(){
 }
 $(document).ready(()=>{
     getCart();
-}
+});
 </script>
 <div class="container-fluid">
 <div class="h3">Shop</p>
@@ -59,13 +62,8 @@ $(document).ready(()=>{
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button onclick="addToCart"(<?php safer_echo($item['id']));?> Add to Cart </button>                
+                        <button onclick="addToCart"(<?php safer_echo($item['id']);?>>"">Add to Cart</button>
                 <?php endforeach; ?>
             </div>
         </div>
     <?php else : ?>
-        <p>Sorry, everything is sold out. </p>
-    <?php endif; ?>
-    </div>
-        <div id="cart" style= "float: right";>
-        </div>                
