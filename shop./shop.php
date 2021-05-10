@@ -59,11 +59,13 @@ $(document).ready(()=>{
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button onclick="addToCart"(<?php safer_echo($item['id']);?>>"">Add to Cart</button>                
+                        <button onclick="addToCart"(<?php safer_echo($item['id']));?> Add to Cart </button>                
                 <?php endforeach; ?>
             </div>
         </div>
     <?php else : ?>
         <p>Sorry, everything is sold out. </p>
     <?php endif; ?>
-    </div?                
+    </div>
+        <div id="cart" style= "float: right";>
+        </div>                
