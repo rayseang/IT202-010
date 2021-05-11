@@ -1,5 +1,3 @@
-                                                     File: shop.php
-
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
 if (!is_logged_in()) {
@@ -67,4 +65,6 @@ $(document).ready(()=>{
             </div>
         </div>
     <?php else : ?>
-
+        <p> Sorry, everything is sold out.</p>
+    <?php endif;?>
+</div>    
