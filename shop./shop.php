@@ -45,7 +45,7 @@ $(document).ready(()=>{
 <div class="h3">Shop</p>
     <?php if (count($results)>0) : ?>
         <div class="card-group">
-            <?php foreach($results as $items) :?>
+            <?php foreach($results as $item) :?>
                 <div class="card" style="max-width:20m">
                     <div class="card-body">
                         <h5 class="card-title"><?php safer_echo($item["name"]);?></h5>
@@ -59,11 +59,16 @@ $(document).ready(()=>{
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <button onclick="addToCart"<?php safer_echo($item['id']);?>"">Add to Cart</button>
+                        <div class="card-footer">
+                            <button onclick="addToCart"<?php safer_echo($item['id']);?>"">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+         </div>               
                 <?php endforeach; ?>
             </div>
         </div>
+    </div> 
     <?php else : ?>
         <p> Sorry, everything is sold out.</p>
     <?php endif;?>
