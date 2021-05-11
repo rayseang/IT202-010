@@ -72,7 +72,7 @@ if($r){
 ?>
 <div class="contatiner">
 <div class="h3">Cart</div>
-<?php if(count($results)>0);?>
+<?php if(count($results)>0):?>
     <ul class= "list-group">
         <div class="row fw-bold">
                     <div class="col">Name</div>
@@ -111,7 +111,7 @@ if($r){
 </div>
 
 <script>
-function deleteCartItem(id){
+function deleteCartitem(id){
     if(id){
         $.post("api/remove_item_from_cart_.php", {cart_id :id}, (data, status)=>{
             data= JSON.parse(data);
