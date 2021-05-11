@@ -42,7 +42,7 @@ $(document).ready(()=>{
 });
 </script>
 <div class="container-fluid">
-<div class="h3">Shop</p>
+    <div class="h3">Shop</p>
     <?php if (count($results)>0) : ?>
         <div class="card-group">
             <?php foreach($results as $item) :?>
@@ -55,21 +55,19 @@ $(document).ready(()=>{
                                     <?php safer_echo($item["price"]);?>
                                 </div>
                                 <div class="col">
-                                Stock: <?php safer_echo($item["quantity"]);?></div>
+                                    Stock: <?php safer_echo($item["quantity"]);?></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="card-footer">
                             <button onclick="addToCart"<?php safer_echo($item['id']);?>"">Add to Cart</button>
+                        </div>
                     </div>
-                </div>
-            </div>
-         </div>               
-                <?php endforeach; ?>
-            </div>
+                </div>           
+            <?php endforeach; ?>
         </div>
-    </div> 
     <?php else : ?>
         <p> Sorry, everything is sold out.</p>
     <?php endif;?>
+    </div>
 </div>    
