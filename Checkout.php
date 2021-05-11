@@ -9,12 +9,13 @@ if (!is_logged_in()) {
 $db=getDB();
 $results=[];
 $query="SELECT c.id, name, p.id as product_id, p.price, c.quantity, (p.price * c.quantity) as sub, (c.price-p.price) as diff. p.name FROM Cart c JOIN Products p on c.product_id = p.id WHERE c.user = :uid ";    $stmt= $db->prepare($query);
-$r= $stmr->execute([
+$r= $stmr->execute()[
         "uid:"=>get_user_id()
     ]);
 if($r){
         $result = $stmt ->fetchAll(PDO::FETCH_ASSOC);
     }
+echo var_export($stmt->errorInfo(), true);    
 ?>
 <?php 
     if(isset($_POST["purchase"])){
