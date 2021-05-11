@@ -1,3 +1,5 @@
+                                                     File: shop.php
+
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
 if (!is_logged_in()) {
